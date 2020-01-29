@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>Rutas Mtb</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+<!--===============================================================================================-->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/logoManizales.png"/>
+<!--===============================================================================================-->
+
+<!-- reference to Leaflet JavaScript -->
+	<!-- leaflet-ui -->
+	<link rel="stylesheet" href="vendor/leaflet-elevation/leaflet-elevation.css" />
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    
+
+	<script src="https://d19vzq90twjlae.cloudfront.net/leaflet-0.7.3/leaflet.js"></script>
+	<link rel="stylesheet" href="https://d19vzq90twjlae.cloudfront.net/leaflet-0.7.3/leaflet.css" />
+    <script type="text/javascript" src="vendor/leaflet-elevation/leaflet-elevation.js"></script>
+	<script type="text/javascript" src="./lib/leaflet-gpx/gpx.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/themify/themify-icons.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/slick/slick.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/lightbox2/css/lightbox.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+
+	<!--===============================================================================================-->
+</head>
+<body class="animsition">
+	<!--Comentarios-->
+	<div id = "fb-root" > </div> 
+	<script async defer crossorigin = "anónimo" src = "https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v5.0" > </script> 
+
+	<!-- Header -->
+	<header>
+		<!-- Header desktop -->
+		<div class="wrap-menu-header gradient1 trans-0-4">
+			<div class="container h-full">
+				<div class="wrap_header trans-0-3">
+					<!-- Logo -->
+					<div class="logo">
+						<a href="index.html">
+							<img src="images/icons/logoManizales.png" alt="IMG-LOGO" data-logofixed="images/icons/logoManizales.png">
+						</a>
+					</div>
+
+					<!-- Menu -->
+					<div class="wrap_menu p-l-45 p-l-0-xl">
+						<nav class="menu">
+							<ul class="main_menu">
+								<li>
+									<a href="inicio">Inicio</a>
+								</li>
+
+								<li>
+									<a href="rutasMtb">Rutas</a>
+								</li>
+
+								<li>
+									<a href="grupos">Grupos Mtb</a>
+								</li>
+
+								<li>
+									<a href="contacto">Contactanos</a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+
+					<!-- Social -->
+					<div class="social flex-w flex-l-m p-r-20">
+						<a href="#"><i class="fa fa-facebook m-l-21" aria-hidden="true"></i></a>
+						<a href="#"><i class="fa fa-twitter m-l-21" aria-hidden="true"></i></a>
+
+						<button class="btn-show-sidebar m-l-33 trans-0-4"></button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	
+	<!-- Sidebar -->
+	<aside class="sidebar trans-0-4">
+		<!-- Button Hide sidebar -->
+		<button class="btn-hide-sidebar ti-close color0-hov trans-0-4"></button>
+
+		<!-- - -->
+		<ul class="menu-sidebar p-t-95 p-b-70">
+			<li class="t-center m-b-13">
+				<a href="inicio" class="txt19">Inicio</a>
+			</li>
+
+			<li class="t-center m-b-13">
+				<a href="grupos" class="txt19">Grupos</a>
+			</li>
+
+			<li class="t-center m-b-13">
+				<a href="eventos" class="txt19">Eventos</a>
+			</li>
+
+			<li class="t-center m-b-13">
+				<a href="contacto" class="txt19">Contactanos</a>
+			</li>
+
+		
+			<li class="t-center">
+				<!-- Button3 -->
+				<a href="rutasMtb" class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto">
+					Rutas
+				</a>
+			</li>
+		</ul>
+
+		
+	</aside>
+
+
+	<!-- Title Page -->
+	<section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(images/slide/slide10.jpg);">
+		<h2 class="tit6 t-center" >
+			Rutas de cicloturismo
+		</h2>
+	</section>
+
+
+
+	
+	<section class="section-contact bg1-pattern p-t-90 p-b-113">
+		<!-- Map -->
+		<div class="container">
+			<div class="map bo8 bo-rad-10 of-hidden" id=containerMap>
+                    <div  id="mapaRuta" ></div>
+                    <div id="infoRuta">
+                        <table>
+							<tr>
+                                <td id="nomRuta" class="t-center tit0" colspan="2"><b></b></td>
+                                <td class="t-center tit0"colspan="2" ><b></td>
+							</tr>
+							<br>
+                            <tr>
+                                <td class="t-left txt4"><b>Distancia:</b></td>
+                                <td id="distRuta" class="t-center txt4">14 km</td>
+                            </tr>
+                            <tr>
+                                <td class="t-left txt4"><b>Complejidad:</b></td>
+                                <td id="compRuta" class="t-center txt4">Media</td>
+                            </tr>
+                            <tr>
+                                <td class="t-left txt4" ><b>Descripción:</b></td>
+                                <td id="descRuta" class="t-middle txt4">Descripción	Es una de las rutas más transitadas 
+                                    por su entorno rural a pocos kilómetros de la ciudad, 
+                                    en ella podrás disfrutar de una vista de la ciudad desde
+                                    lo alto además de un paisaje verde vivido por su clima húmedo.</td>
+							</tr>
+							<tr>
+                                <td class="t-left txt4" ><b>Calificacion:</b></td>
+                                <td id="puntRuta" class="t-middle txt4">5</td>
+                            </tr>
+						</table>
+						<br>
+						<br>
+						<div  id="mapaRuta" ></div>  
+            <div class="wrap-gallery-sidebar flex-w">
+                <a class="item-gallery-sidebar wrap-pic-w" href="images/rutas/laPuerta/01.jpg" data-lightbox="gallery-footer">
+                    <img src="images/rutas/laPuerta/01.jpg" alt="GALLERY">
+                </a>
+
+                <a class="item-gallery-sidebar wrap-pic-w" href="images/rutas/laPuerta/02.jpg" data-lightbox="gallery-footer">
+                    <img src="images/rutas/laPuerta/02.jpg" alt="GALLERY">
+                </a>
+
+                <a class="item-gallery-sidebar wrap-pic-w" href="images/rutas/laPuerta/03.jpg" data-lightbox="gallery-footer">
+                    <img src="images/rutas/laPuerta/03.jpg" alt="GALLERY">
+                </a>
+
+                <a class="item-gallery-sidebar wrap-pic-w" href="images/rutas/laPuerta/04.jpg" data-lightbox="gallery-footer">
+                    <img src="images/rutas/laPuerta/04.jpg" alt="GALLERY">
+                </a>
+
+                <a class="item-gallery-sidebar wrap-pic-w" href="images/rutas/laPuerta/05.jpg" data-lightbox="gallery-footer">
+                    <img src="images/rutas/laPuerta/05.jpg" alt="GALLERY">
+                </a>
+
+                <a class="item-gallery-sidebar wrap-pic-w" href="images/rutas/laPuerta/06.jpg" data-lightbox="gallery-footer">
+                    <img src="images/rutas/laPuerta/06.jpg" alt="GALLERY">
+                </a>
+            </div>    
+	</div>
+	<br>
+	<br>
+						<!--Calificacion-->
+						<div class="estrellas">
+							<table>
+								<tr>
+									<td class="tit0">Indica tu calificación</td>
+									<td>
+											<form>
+													<p class="clasificacion">
+													  <input id="radio1" type="radio" name="estrellas" value="5"><!--
+													  --><label for="radio1">★</label><!--
+													  --><input id="radio2" type="radio" name="estrellas" value="4"><!--
+													  --><label for="radio2">★</label><!--
+													  --><input id="radio3" type="radio" name="estrellas" value="3"><!--
+													  --><label for="radio3">★</label><!--
+													  --><input id="radio4" type="radio" name="estrellas" value="2"><!--
+													  --><label for="radio4">★</label><!--
+													  --><input id="radio5" type="radio" name="estrellas" value="1"><!--
+													  --><label for="radio5">★</label>
+													</p>
+												  </form>
+									</td>
+									<td><a class="btnC flex-c-m sizeC txtC trans-0-4 m-l-r-auto">
+											Okey
+										</a></td>
+								</tr>
+							</table>
+						</div>
+					<!--Comentarios-->
+			<div class = "coment">
+				<div id = "comment" class = "fb-comments" data-href = "http: // localhost: 3000 / contacto" data-width = "100%" data-numposts = "5" > </div>  
+			</div>	      
+			</div>	
+			
+			
+		</div>
+		
+    </section>
+   
+	
+
+	<!-- Footer -->
+	<footer class="bg1">
+		<div class="end-footer bg2">
+			<div class="container">
+				<div class="flex-sb-m flex-w p-t-22 p-b-22">
+					<div class="p-t-5 p-b-5">
+						<a href="#" class="fs-15 c-white"><i class="fa fa-facebook m-l-18" aria-hidden="true"></i></a>
+						<a href="#" class="fs-15 c-white"><i class="fa fa-twitter m-l-18" aria-hidden="true"></i></a>
+					</div>
+
+					<div class="txt17 p-r-20 p-t-5 p-b-5">
+						Natalia Erira &copy; 2019 
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+
+	<!-- Back to top -->
+	<div class="btn-back-to-top bg0-hov" id="myBtn">
+		<span class="symbol-btn-back-to-top">
+			<i class="fa fa-angle-double-up" aria-hidden="true"></i>
+		</span>
+	</div>
+
+	<!-- Container Selection1 -->
+	<div id="dropDownSelect1"></div>
+
+
+
+
+<!--===============================================================================================-->
+	<script type="text/javascript" src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="vendor/slick/slick.min.js"></script>
+	<script type="text/javascript" src="js/slick-custom.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="vendor/lightbox2/js/lightbox.min.js"></script>
+<!--===============================================================================================-->
+<!--===============================================================================================-->
+	<script type="text/javascript" src="js/main.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="./js/map-ruta.js"></script>
+<!--===============================================================================================-->
+	
+
+</body>
+</html>

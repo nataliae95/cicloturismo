@@ -1,0 +1,25 @@
+{
+  "name": "cicloturismo(prueba)",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "chart": "^0.1.2",
+    "chart.js": "^2.9.2",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "leaflet.elevation": "0.0.3",
+    "mysql": "^2.17.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
